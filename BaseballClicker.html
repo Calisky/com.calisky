@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Baseball Clicker</title>
+	
+	  <head>
+    <meta charset="UTF-8">
+    <title>Baseball Clicker</title>
+        <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding-top: 20px;
+      }
+      
+      h1 {
+        margin-bottom: 30px;
+      }
+      
+      button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 80px;
+      }
+      
+      button:hover {
+        background-color: #3e8e41;
+      }
+      
+      #reset-btn {
+        background-color: #f44336;
+      }
+      
+      #reset-btn:hover {
+        background-color: #cc2d22;
+      }
+      
+      span {
+        font-size: 24px;
+        margin: 10px;
+      }
+
+      /* Media queries for responsive layout */
+      @media only screen and (max-width: 600px) {
+        button {
+          width: 50%;
+        }
+
+        span {
+          display: block;
+          margin-top: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Baseball Clicker</h1>
+    
+    <button id="ball-btn">Ball</button>
+    <span id="ball-count">0</span>
+    <br>
+    
+    <button id="strike-btn">Strike</button>
+    <span id="strike-count">0</span>
+    <br>
+    
+    <button id="hit-btn">Hit</button>
+    <span id="hit-count">0</span>
+    <br>
+    
+    <button id="foul-btn">Foul</button>
+    <span id="foul-count">0</span>
+    <br>
+    
+    <button id="reset-btn">Reset</button>
+    
+    <script>
+      const ballBtn = document.getElementById('ball-btn');
+      const ballCount = document.getElementById('ball-count');
+      const strikeBtn = document.getElementById('strike-btn');
+      const strikeCount = document.getElementById('strike-count');
+      const hitBtn = document.getElementById('hit-btn');
+      const hitCount = document.getElementById('hit-count');
+      const foulBtn = document.getElementById('foul-btn');
+      const foulCount = document.getElementById('foul-count');
+      const resetBtn = document.getElementById('reset-btn');
+      
+      let ballClicks = parseInt(localStorage.getItem('ballClicks')) || 0;
+      let strikeClicks = parseInt(localStorage.getItem('strikeClicks')) || 0;
+      let hitClicks = parseInt(localStorage.getItem('hitClicks')) || 0;
+      let foulClicks = parseInt(localStorage.getItem('foulClicks')) || 0;
+      
+      ballCount.innerHTML = ballClicks;
+      strikeCount.innerHTML = strikeClicks;
+      hitCount.innerHTML = hitClicks;
+      foulCount.innerHTML = foulClicks;
+      
+      ballBtn.addEventListener('click', () => {
+        ballClicks++;
+        ballCount.innerHTML = ballClicks;
+        localStorage.setItem('ballClicks', ballClicks);
+      });
+      
+      strikeBtn.addEventListener('click', () => {
+        strikeClicks++;
+        strikeCount.innerHTML = strikeClicks;
+        localStorage.setItem('strikeClicks', strikeClicks);
+      });
+      
+      hitBtn.addEventListener('click', () => {
+        hitClicks++;
+        hitCount.innerHTML = hitClicks;
+        localStorage.setItem('hitClicks', hitClicks);
+      });
+      
+      foulBtn.addEventListener('click', () => {
+        foulClicks++;
+        foulCount.innerHTML = foulClicks;
+        localStorage.setItem('foulClicks', foulClicks);
+      });
+      
+      resetBtn.addEventListener('click', () => {
+        ballClicks = 0;
+        ballCount.innerHTML = ballClicks;
+        localStorage.setItem('ballClicks', ballClicks);
+        strikeClicks = 0;
+        strikeCount.innerHTML = strikeClicks;
+        localStorage.setItem('strikeClicks', strikeClicks);
+        hitClicks = 0;
+        hitCount.innerHTML = hitClicks;
+        localStorage.setItem('hitClicks', hitClicks);
+        foulClicks = 0;
+        foulCount.innerHTML = foulClicks;
+        localStorage.setItem('foulClicks', foulClicks);
+      });
+    </script>
+    
+  </body>
+</html>
